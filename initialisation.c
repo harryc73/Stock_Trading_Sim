@@ -6,6 +6,7 @@
 
 #define STARTING_CASH 1000
 
+
 struct game *initialisation_sequence (void) {
     print_welcome_banner();
 }
@@ -15,7 +16,7 @@ struct player *add_player (char name[50], struct player *next_player) {
     strcpy(new_player->name, name);
     new_player->cash = STARTING_CASH;
     new_player->next = next_player;
-    return add_player;
+    return new_player;
 }
 
 struct company *add_company (char name[50], 
