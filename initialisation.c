@@ -7,12 +7,21 @@
 #define STARTING_CASH 1000
 
 
+/* This will be stage one
+    all setup functions will be put here
+    all setup logic will be put here as well*/
+
+
+
 struct game *initialisation_sequence (void) {
     print_welcome_banner();
 }
 
 struct player *add_player (char name[50], struct player *next_player) {
     struct player *new_player = malloc(sizeof(struct player));
+    if (new_player == NULL) {
+            exit(1);
+        }
     strcpy(new_player->name, name);
     new_player->cash = STARTING_CASH;
     new_player->next = next_player;
@@ -25,6 +34,9 @@ struct company *add_company (char name[50],
     double previous_price, 
     int total_shares) {
         struct company *new_company = malloc(sizeof(struct company));
+        if (new_company == NULL) {
+            exit(1);
+        }
         strcpy(new_company->name, name);
         strcpy(new_company->description, description);
         new_company->current_price = current_price;
@@ -35,6 +47,9 @@ struct company *add_company (char name[50],
 
 struct share *add_shares (struct company *bought_company, int quantity) {
     struct share *new_share = malloc(sizeof(struct share));
+    if (new_share == NULL) {
+            exit(1);
+        }
     new_share->bought_company = bought_company;
     new_share->quantity = quantity;
     return new_share;
