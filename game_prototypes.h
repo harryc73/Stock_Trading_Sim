@@ -1,5 +1,3 @@
-#ifndef GAME_PROTOTYPES_H
-#define GAME_PROTOTYPES_H
 
 #include <stdio.h>
 
@@ -42,4 +40,3 @@ struct company *add_company(char name[50],
     int total_shares);
 struct share *add_shares(struct company *bought_company, int quantity);
 
-#endif // GAME_PROTOTYPES_H
