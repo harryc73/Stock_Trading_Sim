@@ -47,6 +47,7 @@ struct company *add_company(char name[50],
     char description[200], 
     double current_price, 
     double previous_price, 
-    int total_shares);
-struct share *add_shares(struct company *bought_company, int quantity);
+    int total_shares,
+    struct company *next);
+struct share *add_shares(struct company *bought_company, int quantity, struct share *next);
 

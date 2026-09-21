@@ -34,7 +34,7 @@ struct company *add_company (char name[50],
     char description[200], 
     double current_price, 
     double previous_price, 
-    int total_shares) {
+    int total_shares, struct company *next) {
         struct company *new_company = malloc(sizeof(struct company));
         if (new_company == NULL) {
             exit(1);
@@ -44,16 +44,18 @@ struct company *add_company (char name[50],
         new_company->current_price = current_price;
         new_company->previous_price = previous_price;
         new_company->total_shares = total_shares;
+        new_company->next = next;
         return new_company;
     }
 
-struct share *add_shares (struct company *bought_company, int quantity) {
+struct share *add_shares (struct company *bought_company, int quantity, struct share *next) {
     struct share *new_share = malloc(sizeof(struct share));
     if (new_share == NULL) {
             exit(1);
         }
     new_share->bought_company = bought_company;
     new_share->quantity = quantity;
+    new_share->next = next;
     return new_share;
 }
 
