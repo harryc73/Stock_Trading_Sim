@@ -17,6 +17,8 @@ struct game *initialisation_sequence (void) {
     print_welcome_banner();
 }
 
+// Adding Nodes
+
 struct player *add_player (char name[50], struct player *next_player) {
     struct player *new_player = malloc(sizeof(struct player));
     if (new_player == NULL) {
@@ -55,6 +57,56 @@ struct share *add_shares (struct company *bought_company, int quantity) {
     return new_share;
 }
 
+// Finding specific nodes
+
+struct player *find_player (struct player *head, char name[50]){
+    struct player *curr_player = head;
+    int found = FALSE;
+
+    while (found == FALSE) {
+        if (strcmp(curr_player->name, name) != 0) {
+            found = TRUE;
+        } else {
+            curr_player = curr_player->next;
+        }
+    }
+    return curr_player;
+
+    // NULL == NOT_FOUND
+}
+
+struct company *find_company (struct company *head, char name[50]){
+    struct company *curr_company = head;
+    int found = FALSE;
+
+    while (found == FALSE) {
+        if (strcmp(curr_company->name, name) != 0) {
+            found = TRUE;
+        } else {
+            curr_company = curr_company->next;
+        }
+    }
+    return curr_company;
+
+    // NULL == NOT_FOUND
+}
+
+
+struct share *find_share (struct share *head, struct company *target){
+    struct share *curr_share = head;
+    int found = FALSE;
+
+    while (found == FALSE) {
+        if (curr_share->bought_company == target) {
+            found = TRUE;
+        } else {
+            curr_share = curr_share->next;
+        }
+    }
+    return curr_share;
+
+    // NULL == NOT_FOUND
+}
 
 void print_welcome_banner(void) {
     printf(
