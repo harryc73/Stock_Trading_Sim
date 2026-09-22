@@ -1,4 +1,4 @@
-
+// Duckling Force
 #include <stdio.h>
 
 #define MAX_COMPANIES 50
